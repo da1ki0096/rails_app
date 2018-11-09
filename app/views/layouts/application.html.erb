@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cafemug</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+<script>
+$(document).ready(function() {
+  $('.drawer').drawer();
+});
+</script>
+<body class="drawer drawer--left">
+<!-- <body> -->
+  <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="http://placehold.it/300x60?text=Logo" width="150" height="30" alt="">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+<!--          <li class="nav-item active">-->
+            <%#= link_to 'Log In',new_user_session_path, { :class => "nav-link" }%>
+<!--            <a class="nav-link" href="/user_ms/sign_in">Log In</a>-->
+<!--              <span class="sr-only">(current)</span>-->
+<!--            </a>-->
+<!--          </li>-->
+          <!-- <li class="nav-item">
+            <div class="session-control-box">
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav> --> -->
+  <header role="banner">
+    <button type="button" class="drawer-toggle drawer-hamburger">
+      <span class="sr-only">toggle navigation</span>
+      <span class="drawer-hamburger-icon"></span>
+    </button>
+    <nav class="drawer-nav" role="navigation">
+      <ul class="drawer-menu">
+        <li><a class="drawer-brand" href="#">Brand</a></li>
+        <li><a class="drawer-menu-item" href="#">Nav1</a></li>
+        <li><a class="drawer-menu-item" href="#">Nav2</a></li>
+      </ul>
+    </nav>
+  </header>
+  <% if admin_signed_in? %>
+    <p><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></p>
+  <% end %>
+  <% if notice %>
+  <p class="notice"><%= notice %></p>
+<% elsif alert %>
+  <p class="alert"><%= alert %></p>
+<% end %>
+<div class="container">
+  <%= yield %>
+</div>
+</body>
+</html>
